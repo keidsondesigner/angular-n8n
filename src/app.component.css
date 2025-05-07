@@ -87,6 +87,33 @@
   font-weight: 600;
 }
 
+.recipe-section-title {
+  color: #FF416C;
+  font-size: 1.3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.7rem;
+  font-weight: 600;
+}
+
+.recipe-list {
+  margin-bottom: 1.2rem;
+  padding-left: 1.5rem;
+}
+
+.recipe-list li {
+  margin-bottom: 0.5rem;
+  font-size: 1.08rem;
+  color: #333;
+}
+
+.recipe-result ol.recipe-list {
+  list-style-type: decimal;
+}
+
+.recipe-result ul.recipe-list {
+  list-style-type: disc;
+}
+
 .features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));

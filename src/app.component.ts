@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { RecipeService } from './recipe.service';
+import { RecipeService } from './services/recipe.service';
+import { formatRecipe } from './utils/recipe-formatter';
 
 @Component({
   selector: 'app-root',
@@ -13,12 +14,7 @@ export class AppComponent {
 
   constructor(private recipeService: RecipeService) {}
 
-  formatRecipe(text: string): string {
-    return text
-      .replace(/\n/g, '<br>')
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\*(.*?)\*/g, '<em>$1</em>');
-  }
+  formatRecipe = formatRecipe;
 
   generateRecipe() {
     if (!this.ingredients.trim()) {
@@ -28,7 +24,9 @@ export class AppComponent {
     this.recipe = '';
     this.recipeService.generateRecipe(this.ingredients).subscribe({
       next: (response: any) => {
-        this.recipe = response.recipe || response.message || JSON.stringify(response, null, 2);
+        // Suporte para resposta em { output: ... }
+        const recipeText = response.recipe || response.output || response.message || JSON.stringify(response, null, 2);
+        this.recipe = recipeText;
         this.isLoading = false;
       },
       error: (error) => {
@@ -38,4 +36,4 @@ export class AppComponent {
       }
     });
   }
-} 
+}
