@@ -1,0 +1,7 @@
+{
+  "/api": {
+    "target": "https://keidsonroby.app.n8n.cloud",
+    "secure": false,
+    "changeOrigin": true
+  }
+}

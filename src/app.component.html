@@ -1,0 +1,78 @@
+<div class="header">
+  <div class="container">
+    <h1>FitChef AI</h1>
+    <p>Transforme seus ingredientes em deliciosas receitas fitness com a ajuda da nossa IA</p>
+  </div>
+</div>
+
+<div class="main-content">
+  <div class="container">
+    <div class="chat-container">
+      <mat-card>
+        <mat-card-content class="recipe-form">
+          <div class="input-container">
+            <h2 style="font-size: 1.8rem; margin-bottom: 1rem; color: #333;">
+              Quais ingredientes você tem?
+            </h2>
+            <p style="color: #666; margin-bottom: 2rem;">
+              Liste seus ingredientes disponíveis e deixe nossa IA criar receitas fitness incríveis para você
+            </p>
+            
+            <mat-form-field appearance="outline">
+              <mat-label>Seus ingredientes</mat-label>
+              <textarea 
+                matInput 
+                [(ngModel)]="ingredients"
+                placeholder="Ex: peito de frango, quinoa, espinafre..."
+                rows="4"
+                style="font-size: 1.1rem;">
+              </textarea>
+              <mat-hint>Separe os ingredientes por vírgula</mat-hint>
+            </mat-form-field>
+
+            <button 
+              mat-raised-button 
+              color="primary" 
+              (click)="generateRecipe()"
+              [disabled]="isLoading"
+              style="width: 100%; margin-top: 1rem; height: 50px;">
+              <mat-icon>restaurant</mat-icon>
+              {{ isLoading ? 'Gerando receita...' : 'Criar Receita Personalizada' }}
+            </button>
+          </div>
+
+          <div *ngIf="recipe" class="recipe-result">
+            <h3 style="color: #333; margin-bottom: 1rem;">Sua Receita Personalizada</h3>
+            <div [innerHTML]="formatRecipe(recipe)"></div>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card">
+        <mat-icon style="font-size: 2rem; height: 2rem; width: 2rem; margin-bottom: 1rem; color: #FF416C">
+          fitness_center
+        </mat-icon>
+        <h3 style="margin-bottom: 0.5rem; color: #333;">Receitas Fitness</h3>
+        <p style="color: #666;">Receitas saudáveis e nutritivas para seu objetivo</p>
+      </div>
+
+      <div class="feature-card">
+        <mat-icon style="font-size: 2rem; height: 2rem; width: 2rem; margin-bottom: 1rem; color: #FF416C">
+          psychology
+        </mat-icon>
+        <h3 style="margin-bottom: 0.5rem; color: #333;">IA Inteligente</h3>
+        <p style="color: #666;">Sugestões personalizadas baseadas nos seus ingredientes</p>
+      </div>
+
+      <div class="feature-card">
+        <mat-icon style="font-size: 2rem; height: 2rem; width: 2rem; margin-bottom: 1rem; color: #FF416C">
+          timer
+        </mat-icon>
+        <h3 style="margin-bottom: 0.5rem; color: #333;">Rápido e Fácil</h3>
+        <p style="color: #666;">Receitas práticas para seu dia a dia</p>
+      </div>
+    </div>
+  </div>
+</div> 
