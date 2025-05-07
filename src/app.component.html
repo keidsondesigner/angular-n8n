@@ -43,7 +43,7 @@
 
           <div *ngIf="recipe" class="recipe-result">
             <h3 style="color: #333; margin-bottom: 1rem;">Sua Receita Personalizada</h3>
-            <div [innerHTML]="formatRecipe(recipe)"></div>
+            <div [innerHTML]="recipe | recipeFormat"></div>
           </div>
         </mat-card-content>
       </mat-card>

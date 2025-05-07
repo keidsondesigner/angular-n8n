@@ -9,9 +9,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { AppComponent } from './app.component';
+import { RecipeService } from './services/recipe.service';
+import { RecipeFormatPipe } from './pipes/recipe-format.pipe';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, RecipeFormatPipe],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -23,6 +25,7 @@ import { AppComponent } from './app.component';
     MatCardModule,
     MatIconModule
   ],
+  providers: [RecipeService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
